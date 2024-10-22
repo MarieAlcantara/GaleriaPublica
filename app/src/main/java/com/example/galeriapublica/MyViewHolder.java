@@ -1,9 +1,14 @@
 package com.example.galeriapublica;
 
+
+import android.view.View;
+
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class ListAdapter extends PagingDataAdapter<ImageData, MyViewHolder> {
+public class MyViewHolder extends RecyclerView.ViewHolder {
+    public MyViewHolder(@NonNull View itemView) {
+        super(itemView);
+    }
 
-    public ListAdapter(@NonNull DiffUtil.ItemCallback<ImageData> diffCallback)
 }
