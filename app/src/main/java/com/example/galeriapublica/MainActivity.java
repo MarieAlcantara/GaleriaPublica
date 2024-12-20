@@ -50,22 +50,19 @@ public class MainActivity extends AppCompatActivity {
 
         //referencia ao BottonNavigationView
         bottomNavigationView = findViewById(R.id.btNav);
-        bottomNavigationView.setOnItemReselectedListener(new NavigationBarView.OnItemSelectedListener() {
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             //o metodo sera chamado ao usuario clicar no botao
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 //guardamos  dentro do ViewModelModel a opcao que foi escolhida pelo usuario
                 vm.setNavigationOpSelected(item.getItemId());
-                switch (item.getItemId()) {
-                    //define as opcoes que serao realizadas em cada acao
-                    case R.id.gridViewOp:
-                        GridViewFragment gridViewFragment = GridViewFragment.newInstance();
-                        setFragment(gridViewFragment);
-                        break;
-                    case R.id.listViewOp:
-                        ListViewFragment listViewFragment = ListViewFragment.newInstance();
-                        setFragment(listViewFragment);
-                        break;
+                if(item.getItemId() == R.id.gridViewOp) {
+                    GridViewFragment gridViewFragment = GridViewFragment.newInstance();
+                    setFragment(gridViewFragment);
+                }
+                if(item.getItemId() == R.id.listViewOp) {
+                    ListViewFragment listViewFragment = ListViewFragment.newInstance();
+                    setFragment(listViewFragment);
                 }
                 return true;
             }

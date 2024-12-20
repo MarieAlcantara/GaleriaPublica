@@ -41,12 +41,12 @@ public class ListViewFragment extends Fragment {
     }
 
     @Override
-    public View onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mViewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
         ListAdapter listAdapter = new ListAdapter(new ImageDataComparator());
         LiveData<PagingData<ImageData>> liveData = mViewModel.getPageLv();
-        LiveData.observe(getViewLifecycleOwner(), new Observer<PagingData<ImageData>>() {
+        liveData.observe(getViewLifecycleOwner(), new Observer<PagingData<ImageData>>() {
             @Override
             public void onChanged(PagingData<ImageData> objectPagingData) {
                 listAdapter.submitData(getViewLifecycleOwner().getLifecycle(),objectPagingData);
@@ -57,11 +57,7 @@ public class ListViewFragment extends Fragment {
         RecyclerView rvGallery = (RecyclerView) view.findViewById(R.id.rvList);
         rvGallery.setAdapter(listAdapter);
         rvGallery.setLayoutManager(new LinearLayoutManager(getContext()));
-
-
     }
-
-
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -94,19 +90,4 @@ public class ListViewFragment extends Fragment {
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list_view, container, false);
-    }
 }
