@@ -36,7 +36,7 @@ public class ListViewFragment extends Fragment {
     //fragment_list_view
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       view = inflater.inflate(R.layout.list_view_fragment, container, false);
+       view = inflater.inflate(R.layout.fragment_list_view, container, false);
        return view;
     }
 
